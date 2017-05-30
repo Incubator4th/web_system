@@ -40,7 +40,8 @@ def handleLogin(driver,username = 'admin',password = 'admin'):
 	driver.get(loginurl)
 
 	elem = driver.find_element_by_xpath("//*[@id='id_username']")
-	elem.send_keys('学生')
+	elem.send_keys(username)
+
 
 	#elem.click()
 
