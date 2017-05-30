@@ -32,7 +32,7 @@ def handleLogin(driver,username = 'admin',password = 'admin'):
 	adminurl = 'http://127.0.0.1:8000/admin/'
 	driver.set_window_size(800,600)
 	driver.get(loginurl)
-	sleep(5)
+	sleep(10)
 	driver.get(t_logurl)
 	sleep(5)
 	driver.get(adminurl)
@@ -40,9 +40,17 @@ def handleLogin(driver,username = 'admin',password = 'admin'):
 	driver.get(loginurl)
 
 	elem = driver.find_element_by_xpath("//*[@id='id_username']")
+	sleep(1)
 	elem.send_keys(username)
 
+	elem = driver.find_element_by_xpath("//*[@id='id_password']")
+	sleep(1)
+	elem.send_keys(password)
 
+	elem = driver.find_element_by_xpath("//*[@id='Login']")
+	elem.send_keys(Keys.ENTER)
+
+	sleep(120)
 	#elem.click()
 
 
