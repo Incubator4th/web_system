@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static "css/Login_style.css" %}" />
+    <script type="text/javascript" src="{% static "js/Login_javascript.js" %}"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Login</title>
+</head>
+
+<body>
+    <h1 align="center">
+        <font color="white">Student Log in</font>
+    </h1>
+    <div class="login_frame"></div>
+    <div class="LoginWindow">
+        <div>
+
+            <form method='post' enctype="multipart/form-data" onsubmit="return user_input()" class="login">
+                {% csrf_token %}
+                <p><label for="username">username:{{uf.username}}</label></p>
+                <p><label style="margin-left:3px; for="password">password:{{uf.password}}</label></p>
+                <!--{{uf.as_p}}-->
+                <div style="text-align:justify;">
+                    <input type="submit" value="Log in" style="border-radius:20px;" />
+
+                    <a href="{% url 'engine:regist'%}">Sign Up</a>
+                    <a href="{% url 'tmanage:t_login'%}">Teacher Login</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+                    {% if messages %}
+                {% for message in messages %}
+               <h3><font color="white"> <p align="center"  {% if message.tags %} class="{{ message.tags }}" {% endif %} style="padding: 10px">{{ message }}</p></font></h3>
+                {% endfor %}{% endif %}
+</body>
+
+</html>
